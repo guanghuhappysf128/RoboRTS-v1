@@ -89,7 +89,9 @@ class MercureDriver: public CameraBase {
   uint8_t* pu8_image_buf_;
   GX_DEV_HANDLE device_;
   GX_STATUS status_;
-  GX_FRAME_DATA *frame_data_;
+  // to accommendate api change
+  // GX_FRAME_DATA *frame_data_;
+  PGX_FRAME_BUFFER frame_data_;
   unsigned int frame_count_;
   CFps fps_;
   double frame_rate_;

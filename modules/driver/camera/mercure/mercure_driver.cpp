@@ -49,7 +49,8 @@ void MercureDriver::LoadParam() {
     printf("DeviceNum is: %d\n", device_num);
   }
 
-  status_ = GXOpenDeviceByIndex(0, &device_);
+  //status_ = GXOpenDeviceByIndex(0, &device_);
+  status_ = GXOpenDeviceByIndex(1, &device_);
   printf("Open Device status_ = %d\n",status_);
 
   //加载默认参数组
@@ -224,7 +225,7 @@ void MercureDriver::LoadParam() {
 }
 
 void MercureDriver::Init(){
-  status_ = GxStreamOn(device_);
+  status_ = GXStreamOn(device_);
   if (status_ != GX_STATUS_SUCCESS){
     printf("AcqusitionStart Failed ret= %d\n",status_);
   }
@@ -235,7 +236,7 @@ void MercureDriver::Init(){
 void MercureDriver::StartReadCamera(unsigned int camera_num, cv::Mat &img){
   if(camera_initialized_) {
     //TIMER_START(mercure)
-    GxDQBuf(device_, &frame_data_, 1000);
+    GXDQBuf(device_, &frame_data_, 1000);
     //sleep(1);
     if (frame_data_ != nullptr) {
       // 丢帧统计
@@ -305,7 +306,7 @@ void MercureDriver::StartReadCamera(unsigned int camera_num, cv::Mat &img){
       //       i64IncompleteFrameCount);
 
       //将图像buffer放回库中
-      GxQBuf(device_, frame_data_);
+      GXQBuf(device_, frame_data_);
       //TIMER_END(mercure)
     } else {
       //can not open camera
@@ -317,7 +318,7 @@ void MercureDriver::StartReadCamera(unsigned int camera_num, cv::Mat &img){
 
 void MercureDriver::StopReadCamera() {
   //停止采集
-  GxStreamOff(device_);
+  GXStreamOff(device_);
   //关闭设备
   GXCloseDevice(device_);
   //释放库

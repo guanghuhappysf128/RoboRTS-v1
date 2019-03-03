@@ -1,7 +1,7 @@
 project(camera_node)
 
 # set this variable to TRUE to enable mercure
-set(use_mercure FALSE)
+set(use_mercure TRUE)
 
 if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64" )
     if (use_mercure)

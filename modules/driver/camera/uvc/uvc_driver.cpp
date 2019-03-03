@@ -38,7 +38,9 @@ void UVCDriver::LoadParam() {
  * @brief
  */
 void UVCDriver::Init(unsigned int camera_num) {
+  //printf("Camera Mode is: %d\n",cameras_[camera_num].mode);
   if (cameras_[camera_num].mode == 0) {
+    //printf("inital camera: %d\n",camera_num);
     unsigned int camera_id = cameras_[camera_num].camera_id;
     cameras_[camera_num].cap_handle.open(camera_id);
     SetCameraExposure(std::to_string(camera_id), cameras_[camera_num].exposure_value);
@@ -46,6 +48,7 @@ void UVCDriver::Init(unsigned int camera_num) {
     read_camera_initialized_ = true;
   }
   else {
+    //printf("inital camera: %d\n",camera_num);
     cameras_[camera_num].cap_handle.open(cameras_[camera_num].video_path);
     SetCameraExposure(cameras_[camera_num].video_path, cameras_[camera_num].exposure_value);
     CHECK(cameras_[camera_num].cap_handle.isOpened()) << "Cannot open " << cameras_[camera_num].video_path << ".";
