@@ -70,7 +70,7 @@ typedef enum {
 
 /* enumeration type data */
 
-typedef enum {
+typedef enum: uint8_t {
   STEP_HEADER_SOF = 0,
   STEP_LENGTH_LOW = 1,
   STEP_LENGTH_HIGH = 2,
@@ -79,13 +79,13 @@ typedef enum {
   STEP_DATA_CRC16 = 5,
 } UnpackStep;
 
-typedef enum {
+typedef enum: uint8_t {
   DEVICE_NORMAL = 0,
   ERROR_EXIST = 1,
   UNKNOWN_STATE = 2,
 } BottomError;
 
-typedef enum {
+typedef enum: uint8_t {
   BOTTOM_DEVICE_NORMAL = 0,
   GIMBAL_GYRO_OFFLINE = 1,
   CHASSIS_GYRO_OFFLINE = 2,
@@ -104,7 +104,7 @@ typedef enum {
   ERROR_LIST_LENGTH = 15,
 } ErrorID;
 
-typedef enum {
+typedef enum: uint8_t {
   GLOBAL_NORMAL = 0,
   SOFTWARE_WARNING = 1,
   SOFTWARE_ERROR = 2,
@@ -114,13 +114,13 @@ typedef enum {
   HARAWARE_ERROR = 6,
 } ErrorLevel;
 
-typedef enum {
+typedef enum: uint8_t {
   NO_CONFIG = 0,
   DEFAULT_CONFIG = 1,
   CUSTOM_CONFIG = 3,
 } StructConfig;
 
-typedef enum {
+typedef enum: uint8_t {
   GIMBAL_RELAX = 0,
   GIMBAL_INIT = 1,
   GIMBAL_NO_ARTI_INPUT = 2,
@@ -132,7 +132,7 @@ typedef enum {
   GIMBAL_RELATIVE_MODE = 8
 } GimbalMode;
 
-typedef enum {
+typedef enum: uint8_t {
   CHASSIS_RELAX = 0,
   CHASSIS_STOP = 1,
   MANUAL_SEPARATE_GIMBAL = 2,
@@ -142,7 +142,7 @@ typedef enum {
   AUTO_FOLLOW_GIMBAL = 6,
 } ChassisMode;
 
-typedef enum {
+typedef enum: uint8_t {
   SHOT_DISABLE = 0,
   REMOTE_CTRL_SHOT = 1,
   KEYBOARD_CTRL_SHOT = 2,

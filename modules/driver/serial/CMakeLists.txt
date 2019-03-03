@@ -10,6 +10,18 @@ add_executable(serial_com_node
         ${SerialProtoSrc}
         ${SerialProtoHds}
         )
+
+# added new node to recalibrate
+add_executable(serial_recal_node serial_recalibration.cpp ${SerialProtoSrc} ${SerialProtoHds})
+target_link_libraries(serial_recal_node
+        PRIVATE
+        common::rrts
+        common::io
+        ${catkin_LIBRARIES}
+        ${PROTOBUF_LIBRARIES}
+        ${GLOG_LIBRARY}
+        )
+
 target_include_directories(serial_com_node
         PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
@@ -36,5 +48,4 @@ target_link_libraries(serial_com_test
         ${catkin_LIBRARIES}
         ${GLOG_LIBRARY}
         )
-
 

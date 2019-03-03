@@ -144,6 +144,11 @@ class SerialComNode : public rrts::common::RRTS {
    */
   void Run();
 
+  // for recalibration
+  void Run(char *);
+  void CaliStart();
+  void CaliStop();
+
   ~SerialComNode();
 
   /**
