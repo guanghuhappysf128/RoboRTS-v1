@@ -1,8 +1,15 @@
 project(camera_node)
 
+# set this variable to TRUE to enable mercure
+set(use_mercure FALSE)
+
 if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64" )
-    add_subdirectory(mercure)
-    ADD_DEFINITIONS(-DAARCH64)
+    if (use_mercure)
+      add_subdirectory(mercure)
+      ADD_DEFINITIONS(-DAARCH64)
+    else()
+      message("mercure is not enabled yet")
+    endif()
 else()
     message("Warning: The mercure driver only support arm64")
 endif()
@@ -41,10 +48,14 @@ add_executable(${PROJECT_NAME}
 )
 
 if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64" )
-target_link_libraries(${PROJECT_NAME}
-  PRIVATE
-  driver::mercure
-)
+  if (use_mercure)
+    target_link_libraries(${PROJECT_NAME}
+      PRIVATE
+      driver::mercure
+    )   
+  else()
+      message("mercure is not enabled yet")
+  endif()
 endif()
 
 target_link_libraries(${PROJECT_NAME}
@@ -60,10 +71,14 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64" )
-target_link_libraries(${PROJECT_NAME}
-  PRIVATE
-  driver::mercure
-)
+  if (use_mercure)
+    target_link_libraries(${PROJECT_NAME}
+      PRIVATE
+      driver::mercure
+    )
+  else()
+      message("mercure is not enabled yet")
+  endif()
 endif()
 
 target_include_directories(${PROJECT_NAME}
