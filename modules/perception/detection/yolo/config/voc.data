@@ -1,0 +1,5 @@
+classes= 1
+
+names = /home/robomaster/workspaces/v1/src/RoboRTS-v1/modules/perception/detection/yolo/config/data/voc.names
+
+
